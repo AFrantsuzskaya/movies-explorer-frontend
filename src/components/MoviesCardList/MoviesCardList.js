@@ -2,9 +2,10 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { moviesCard, moviesCardSaved } from "../../utils/moviesCard";
+import Preloader from "../Preloader/Preloader";
 import "./MoviesCardList.css";
 
-function MoviesCardList() {
+function MoviesCardList({ isLoading }) {
   const { pathname } = useLocation();
   const list = pathname === "/movies" ? moviesCard : moviesCardSaved;
   const buttonMovies = `${
@@ -14,11 +15,17 @@ function MoviesCardList() {
   }`;
   return (
     <section className="movies-list">
-      <ul className="movies-list__box">
-        {list.map((movie) => {
-          return <MoviesCard card={movie} />;
-        })}
-      </ul>
+      
+        {isLoading ? (
+          <Preloader />
+        ) : (
+          <ul className="movies-list__box">
+          {list.map((movie) => {
+            return <MoviesCard card={movie} />;
+          })}
+          </ul>
+        )}
+      
       <button type="button" className={buttonMovies}>
         Ещё
       </button>
