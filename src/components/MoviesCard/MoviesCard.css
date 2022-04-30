@@ -2,7 +2,7 @@
   width: 100%;
   height: 271px;
   background-color: #fdfdfd;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, .08);
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   list-style-type: none;
 }
 
@@ -13,7 +13,7 @@
   margin: 19px 14px 14px 14px;
 }
 
-.movie__info{
+.movie__info {
   display: flex;
   flex-direction: column;
   width: 280px;
@@ -21,7 +21,7 @@
 
 .movie__title {
   color: #000;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
@@ -34,13 +34,13 @@
 }
 
 .movie__time {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 13px;
-    color: #A0A0A0;
-    margin: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  color: #a0a0a0;
+  margin: 0;
 }
 
 .movie__button {
@@ -49,9 +49,8 @@
   border-radius: 20px;
   border: none;
   -webkit-appearance: none;
-  transition: .5s;
-  background: center #f9f9f9 url('../../images/flag-hidden.svg') no-repeat;
-  
+  transition: 0.5s;
+  background: center #f9f9f9 url("../../images/flag-hidden.svg") no-repeat;
 }
 
 .movie__button:hover {
@@ -60,7 +59,7 @@
 }
 
 .movie__button:checked {
-  background: center #2BE080 url('../../images/flag-activ.svg') no-repeat;
+  background: center #2be080 url("../../images/flag-activ.svg") no-repeat;
 }
 
 .movie__delete-button {
@@ -69,8 +68,8 @@
   border-radius: 20px;
   border: none;
   -webkit-appearance: none;
-  transition: .5s;
-  background: center #f9f9f9 url('../../images/flag-del.svg') no-repeat;
+  transition: 0.5s;
+  background: center #f9f9f9 url("../../images/flag-del.svg") no-repeat;
 }
 
 .movie__image {

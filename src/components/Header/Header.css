@@ -32,7 +32,7 @@
 
 .header__logo-link:hover {
   transition: opacity 0.2s linear;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .link {
@@ -40,8 +40,15 @@
   color: #000;
   margin: 0;
   text-align: center;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
+  transform: opacity 0.2s linear;
+}
+
+.link:hover {
+  transform: opacity 0.2s linear;
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .link__movies {
@@ -58,7 +65,7 @@
 }
 
 .link__profile {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   border-radius: 20px;
   width: 100px;
   height: 32px;
@@ -73,7 +80,7 @@
   display: flex;
   width: auto;
   justify-content: space-between;
-  }
+}
 
 .button {
   color: #000;
@@ -91,8 +98,13 @@
   align-items: center;
 }
 
+.button:hover {
+  transition: opacity 0.2s linear;
+  opacity: 0.8;
+}
+
 .header__button_type_signin {
-  background-color: #2BE080;
+  background-color: #2be080;
   width: 76px;
   height: 32px;
   margin-left: 30px;
@@ -120,13 +132,14 @@
 .header__menu {
   display: none;
 }
+
 @media screen and (max-width: 1279px) {
   .header {
     max-width: 708px;
     padding-top: 16px;
     padding-left: 0;
   }
-  
+
   .header_type_profile {
     width: 708px;
   }
@@ -134,7 +147,7 @@
   .header__menu {
     width: 44px;
     height: 44px;
-    background-image: url('../../images/icon_menu.svg');
+    background-image: url("../../images/icon_menu.svg");
     background-size: cover;
     background-color: #fff;
     border: none;
@@ -149,8 +162,6 @@
   }
 }
 
-
-
 @media screen and (max-width: 767px) {
   .header {
     max-width: 292px;
@@ -164,7 +175,7 @@
   .header__menu {
     width: 40px;
     height: 43px;
-    background: center url('../../images/icon__menu_min.svg');
+    background: center url("../../images/icon__menu_min.svg");
   }
 
   .header__logo-link {
@@ -184,7 +195,7 @@
     height: 26px;
     margin-left: 8px;
   }
-  
+
   .header__button_type_signup {
     width: px;
     height: 26px;
@@ -198,6 +209,3 @@
     justify-content: center;
   }
 }
-
-
-

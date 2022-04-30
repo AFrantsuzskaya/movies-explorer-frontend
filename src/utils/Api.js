@@ -1,66 +1,87 @@
 class Api {
-    constructor({ address }) {
-        this._address = address
-    }
+  constructor({ address }) {
+    this._address = address;
+  }
 
-    getUserInfo() {
-        return this._get('users/me')
-    }
+  getUserInfo() {
+    return this._get("users/me");
+  }
 
-    getMovies() {
-        const res = this._get('movies')        
-        return res
-     }
-    
-     setUserInfo(name, email) {
-        return this._set('users/me', 'PATCH', {name, email})
-    }
+  getMovies() {
+    const res = this._get("movies");
+    return res;
+  }
 
-    setMovie(country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN) {
-        return this._set('movies', 'POST', {country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN})
-    }
+  setUserInfo(name, email) {
+    return this._set("users/me", "PATCH", { name, email });
+  }
 
-    removeMovie(id) {
-        return this._set(`movies/${id}`, 'DELETE', {});
-    }
+  setMovie(
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    thumbnail,
+    movieId,
+    nameRU,
+    nameEN
+  ) {
+    return this._set("movies", "POST", {
+      country,
+      director,
+      duration,
+      year,
+      description,
+      image,
+      trailerLink,
+      thumbnail,
+      movieId,
+      nameRU,
+      nameEN,
+    });
+  }
 
-    _get(query) {
-      const options = {
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      }
-      return fetch(this.createUrl(query), options)
-             .then(this._checkResponse)
-    }
+  removeMovie(id) {
+    return this._set(`movies/${id}`, "DELETE", {});
+  }
 
-    _set(query, method, body) {
-      const options = {
-        method,
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body)
-      }
-      return fetch(this.createUrl(query), options)
-             .then(this._checkResponse)
-    }
-    
-    _checkResponse(res) {
-      console.log(res)
-      return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-    }
+  _get(query) {
+    const options = {
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    return fetch(this.createUrl(query), options).then(this._checkResponse);
+  }
 
+  _set(query, method, body) {
+    const options = {
+      method,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    };
+    return fetch(this.createUrl(query), options).then(this._checkResponse);
+  }
 
-    createUrl(query) {
-      return `${this._address}/${query}`
-    }
+  _checkResponse(res) {
+    console.log(res);
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
+  }
+
+  createUrl(query) {
+    return `${this._address}/${query}`;
+  }
 }
 
 const api = new Api({
-  address: 'https://backend.movies.students.nomoredomains.xyz'
-})
+  address: "https://backend.movies.students.nomoredomains.xyz",
+});
 
 export default api;

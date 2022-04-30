@@ -1,22 +1,22 @@
 .project {
-    margin: 0 auto;
-    width: 1140px;
-    padding-left: 50px;
+  margin: 0 auto;
+  width: 1140px;
+  padding-left: 50px;
 }
 
 .project__title {
-    padding-top: 112px;
-    margin: 0;
-    color: #000;
-    font-family: Inter;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 22px;
-    line-height: 26.63px;
-    text-align: left;
-    letter-spacing: -0.4px;
-    border-bottom: 1px solid #000;
-    padding-bottom: 22px;
+  padding-top: 112px;
+  margin: 0;
+  color: #000;
+  font-family: Inter;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 26.63px;
+  text-align: left;
+  letter-spacing: -0.4px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 22px;
 }
 
 .project__description {
@@ -24,7 +24,6 @@
   justify-content: space-between;
   list-style: none;
   padding: 35px 0;
-
 }
 
 .project__element {
@@ -32,25 +31,25 @@
 }
 
 .project__description_type_title {
-    color: #000;
-    font-family: Inter;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: -0.4px;
-    text-align: left;
+  color: #000;
+  font-family: Inter;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.4px;
+  text-align: left;
 }
 
 .project__text {
-    color: #000;
-    font-family: Inter;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: left;
-    padding-top: 5px;
+  color: #000;
+  font-family: Inter;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  padding-top: 5px;
 }
 
 .project__scale {
@@ -63,7 +62,7 @@
 }
 
 .project__scale-time {
-  background-color: #2BE080;
+  background-color: #2be080;
   height: 36px;
   color: #000;
   font-family: Inter;
@@ -77,7 +76,7 @@
 }
 
 .project__scale-time:nth-child(2) {
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 .project__scale-name {
@@ -103,7 +102,7 @@
     padding-bottom: 22px;
     letter-spacing: -1px;
   }
-  
+
   .project__description_type_title {
     letter-spacing: -0.8px;
   }
@@ -111,7 +110,7 @@
   .project__element {
     max-width: 319px;
   }
-  
+
   .project__text {
     font-size: 12px;
     line-height: 18px;
@@ -152,11 +151,11 @@
     margin: 0;
     letter-spacing: -0.7px;
   }
-  
+
   .project__element {
     max-width: 284px;
   }
-  
+
   .project__text {
     font-size: 11px;
     line-height: 16px;
