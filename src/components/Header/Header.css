@@ -191,6 +191,10 @@
     border: none;
   }
 
+  .link__nav-movie {
+    display: none;
+  }
+
   .link__nav {
     display: none;
   }

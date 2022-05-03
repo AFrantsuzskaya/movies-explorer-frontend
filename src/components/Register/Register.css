@@ -57,7 +57,7 @@
 
 .register__input:focus {
   outline: none;
-  border-bottom: 1px solid #2be080;
+  border-bottom: 1px solid #3456F3;
 }
 
 .register__input:invalid {
@@ -69,7 +69,7 @@
   width: 396px;
   height: 45px;
   border: none;
-  background-color: #2be080;
+  background-color: #3456F3;
   border-radius: 3px;
   color: #fff;
   font-family: "Inter";
@@ -93,7 +93,7 @@
 }
 
 .login__navigation {
-  color: #2be080;
+  color: #3456F3;
   text-decoration: none;
 }
 

@@ -24,8 +24,7 @@
   }
 
   .navigation__container {
-    max-width: 67.7vw;
-    width: 530px;
+    width: 65.7vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -36,67 +35,82 @@
     align-items: center;
     margin: 0 auto;
   }
-}
 
-.button__close {
-  background: center url("../../images/Group.svg") no-repeat;
-  width: 22px;
-  height: 22px;
-  border: none;
-  position: relative;
-  top: 36px;
-  left: 94%;
-}
+  .button__close {
+    background: center url("../../images/Group.svg") no-repeat;
+    width: 22px;
+    height: 22px;
+    border: none;
+    position: relative;
+    top: 26px;
+    left: 88.5%;
+  }
 
-.navigation__list-popup {
-  width: 340px;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  padding: 168px 0;
-  list-style-type: none;
-}
+  .navigation__list-popup {
+    width: 340px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 160px 48px 0 0;
+    list-style-type: none;
+  }
 
-.navigation__item {
-  padding-bottom: 28px;
-}
+  .navigation__item {
+    padding-bottom: 28px;
+  }
 
-.navigation__link-popup {
-  color: black;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  text-decoration: none;
-}
+  .navigation__link-popup {
+    color: black;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-decoration: none;
+  }
 
-.link-decoration {
-  border-bottom: 2px solid #000;
-}
+  .link-decoration {
+    border-bottom: 2px solid #000;
+    padding-bottom: 3px;
+  }
 
-.link__popup {
-  margin-top: 425px;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-}
+  .link__popup {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
 
+  .navigation__link-account {
+    margin-top: 592px;
+    display: flex;
+    padding-right: 49px;
+    width: 100px;
+  }
+
+  .link__nav-name {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
 @media screen and (max-width: 767px) {
   .navigation__container {
-    max-width: 320px;
+    width: 100%;
   }
 
   .button__close {
-    top: 40px;
-    left: 87%;
+    top: 25px;
+    left: 73%;
   }
 
   .navigation__list-popup {
     width: 300px;
+    padding: 150px 48px 0 0 ;
   }
 
   .navigation__item {
@@ -104,7 +118,12 @@
     margin-bottom: 25px;
   }
 
-  .link__popup {
-    margin-top: 250px;
+  .link-decoration {
+    padding-bottom: 7px;
+  }
+
+  .navigation__link-account {
+    margin-top: 417px;
+    padding-right: 49px;
   }
 }

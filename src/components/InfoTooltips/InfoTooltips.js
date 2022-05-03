@@ -35,13 +35,12 @@ function InfoTooltips({ isOpen, onClose }) {
             </Link>
           </li>
         </ul>
-        <Link
-          to="/profile"
+        <div className="navigation__link-account">
+          <p className="link__nav-name">Аккаунт</p>
+          <Link to="/profile"
           className="link link__profile link__popup"
-          onClick={onClose}
-        >
-          Аккаунт
-        </Link>
+          onClick={onClose}></Link>
+        </div>
       </div>
       <button
         className="link button__close"
