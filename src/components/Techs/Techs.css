@@ -9,11 +9,10 @@
 .techs__container {
   width: 1140px;
   margin: 0 auto;
-  padding-left: 50px;
 }
 
 .techs__title_type_section {
-  padding-top: 99px;
+  padding-top: 101px;
   margin: 0 auto;
   color: #000;
   font-family: Inter;
@@ -32,13 +31,12 @@
   margin: 0 auto;
   color: #000;
   font-family: Inter;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   font-size: 50px;
   line-height: 58px;
   text-align: center;
   letter-spacing: -2px;
-  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .techs__text {
@@ -97,18 +95,19 @@
 
   .techs__title_type_section {
     padding-top: 90px;
+    padding-bottom: 23px;
   }
 
   .techs__title {
-    padding-top: 82px;
+    padding-top: 81px;
     font-weight: 400;
     letter-spacing: -2px;
   }
 
   .techs__text {
     padding-top: 20px;
-    width: 460px;
-    font-size: 12x;
+    width: 450px;
+    font-size: 12px;
     line-height: 18px;
   }
 

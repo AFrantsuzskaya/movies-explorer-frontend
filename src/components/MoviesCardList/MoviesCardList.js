@@ -13,6 +13,7 @@ function MoviesCardList({ isLoading }) {
       ? "link movies-list__button"
       : "movies-list__button_hidden"
   }`;
+  
   return (
     <section className="movies-list">
       

@@ -1,21 +1,21 @@
 .header {
-  max-width: 1140px;
+  max-width: 1280px;
   min-height: 74px;
   display: flex;
   margin: 0 auto;
   align-items: center;
-  padding: 18px 0 18px 47px;
+  padding: 18px 0 18px;
   justify-content: space-between;
+  background-color: #DDDEE3;
 }
 
 .header_type_profile {
-  width: 1140px;
+  width: 1280px;
   height: 74px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 0 0 0;
 }
 
 .header__link-box {
@@ -28,6 +28,7 @@
 .header__logo-link {
   width: 38px;
   height: 38px;
+  margin-left: 71px;
 }
 
 .header__logo-link:hover {
@@ -66,20 +67,20 @@
 
 .link__profile {
   background-color: #f9f9f9;
-  border-radius: 20px;
-  width: 100px;
-  height: 32px;
-  font-size: 14px;
-  line-height: 16px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: center #F4F4F4 url('../../images/icon__COLOR_icon-main.svg') no-repeat;
 }
 
 .header__buttons {
   display: flex;
   width: auto;
   justify-content: space-between;
+  margin-right: 69px;
 }
 
 .button {
@@ -104,10 +105,11 @@
 }
 
 .header__button_type_signin {
-  background-color: #2be080;
+  background-color: #3456F3;
   width: 76px;
   height: 32px;
   margin-left: 30px;
+  color: #fff;
 }
 
 .header__button_type_signup {
@@ -133,11 +135,47 @@
   display: none;
 }
 
+.link__account {
+  display: flex;
+  width: 97px;
+  height: 30px;
+  justify-content: space-between;
+  margin-right: 72px;
+}
+
+.link__nav-name {
+  width: 80px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+  margin: 0;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.link__nav-movie {
+  width: 212px;
+  padding-left: 60px;
+}
+
 @media screen and (max-width: 1279px) {
   .header {
-    max-width: 708px;
+    max-width: 768px;
     padding-top: 16px;
     padding-left: 0;
+  }
+
+  .header__logo-link {
+    margin-left: 0;
+  }
+
+  .header__buttons {
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    margin-right: 30px;
   }
 
   .header_type_profile {
@@ -157,6 +195,9 @@
     display: none;
   }
 
+  .link__account{
+    display: none;
+  }
   .header__menu {
     display: block;
   }
@@ -164,8 +205,8 @@
 
 @media screen and (max-width: 767px) {
   .header {
-    max-width: 292px;
-    padding: 25px 0 12px;
+    max-width: 320px;
+    padding:0 0 12px;
   }
 
   .header_type_profile {
@@ -178,8 +219,8 @@
     background: center url("../../images/icon__menu_min.svg");
   }
 
-  .header__logo-link {
-    padding-left: 0;
+  .header__buttons {
+    margin-right: 14px;
   }
 
   .header__button_type_signin {
@@ -197,7 +238,6 @@
   }
 
   .header__button_type_signup {
-    width: px;
     height: 26px;
   }
 

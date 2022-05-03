@@ -91,7 +91,7 @@
 
   .footer__title {
     width: 300px;
-    padding: 110px 0 21px 0;
+    padding: 111px 0 21px 0;
     margin-left: 0;
     font-size: 12px;
     line-height: 15px;
@@ -100,7 +100,7 @@
   .footer__container {
     flex-direction: column-reverse;
     justify-content: center;
-    padding: 29px 0 0 0;
+    padding: 28px 0 0 0;
     max-width: 300px;
   }
 
@@ -108,7 +108,7 @@
     flex-direction: column;
     align-items: center;
     padding-inline-start: 0;
-    height: 69px;
+    height: 72px;
   }
 
   .footer__item {

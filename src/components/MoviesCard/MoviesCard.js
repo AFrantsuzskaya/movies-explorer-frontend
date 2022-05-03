@@ -8,10 +8,6 @@ function MoviesCard(props) {
   return (
     <li className="movie">
       <div className="movie__block">
-        <div className="movie__info">
-          <h2 className="movie__title">{props.card.name}</h2>
-          <p className="movie__time">{props.card.time}</p>
-        </div>
         <input
           type="checkbox"
           className={
@@ -20,8 +16,12 @@ function MoviesCard(props) {
               : "link movie__delete-button"
           }
         />
+        <img className="movie__image" src={props.card.link} alt="Фильм" />
       </div>
-      <img className="movie__image" src={props.card.link} alt="Фильм" />
+      <div className="movie__info">
+        <h2 className="movie__title">{props.card.name}</h2>
+        <p className="movie__time">{props.card.time}</p>
+      </div>
     </li>
   );
 }

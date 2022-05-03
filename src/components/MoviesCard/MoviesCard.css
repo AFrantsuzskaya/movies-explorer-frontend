@@ -1,22 +1,20 @@
 .movie {
   width: 100%;
   height: 271px;
-  background-color: #fdfdfd;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  background-color: transparent;
   list-style-type: none;
 }
 
 .movie__block {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 19px 14px 14px 14px;
+  position: relative;
 }
 
 .movie__info {
   display: flex;
-  flex-direction: column;
-  width: 280px;
+  justify-content: space-between;
+  width: 332px;
+  margin: 0 auto;
+  padding: 14px;
 }
 
 .movie__title {
@@ -24,33 +22,30 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 16px;
   margin: 0;
-  white-space: nowrap;
+  /*white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;*/
   padding-bottom: 10px;
 }
 
 .movie__time {
+  width: 52px;
+  height: 18px;
+  text-align: center;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
-  line-height: 13px;
+  line-height: 10px;
   color: #a0a0a0;
   margin: 0;
-}
-
-.movie__button {
-  width: 30px;
-  height: 30px;
-  border-radius: 20px;
-  border: none;
-  -webkit-appearance: none;
-  transition: 0.5s;
-  background: center #f9f9f9 url("../../images/flag-hidden.svg") no-repeat;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .movie__button:hover {
@@ -58,18 +53,56 @@
   opacity: 0.5;
 }
 
+.movie__button {
+  width: 72px;
+  height: 21px;
+  border-radius: 20px;
+  border: none;
+  -webkit-appearance: none;
+  transition: 0.5s;
+  background: #f4f4f4f9;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  opacity: 0;
+}
+
+.movie__button::before {
+  content: "Сохранить";
+  color: #000;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+  transition: 0.5s;
+}
+
 .movie__button:checked {
-  background: center #2be080 url("../../images/flag-activ.svg") no-repeat;
+  opacity: 1;
+  width: 21px;
+  height: 21px;
+  background: center #ee3465 url("../../images/flag-activ.svg") no-repeat;
+}
+
+.movie__button:checked::before {
+  content: none;
+  transition: 0.5s;
 }
 
 .movie__delete-button {
-  width: 30px;
-  height: 30px;
+  width: 21px;
+  height: 21px;
   border-radius: 20px;
   border: none;
   -webkit-appearance: none;
   transition: 0.5s;
   background: center #f9f9f9 url("../../images/flag-del.svg") no-repeat;
+  opacity: 0;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
 }
 
 .movie__image {
@@ -77,6 +110,17 @@
   width: 100%;
   object-fit: cover;
   overflow: hidden;
+  border-radius: 6px;
+}
+
+.movie__block:hover .movie__button .movie__delete-button {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.movie__block:hover .movie__delete-button {
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 
 @media screen and (max-width: 1279px) {
@@ -84,11 +128,27 @@
     width: 339px;
     height: 258px;
   }
+
+  .movie__info {
+    width: 100%;
+    padding: 25px 0;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .movie {
     width: 300px;
-    height: 236px;
+    height: 228px;
   }
+
+  .movie__info {
+    padding: 17px 0;
+  }
+
+  .movie__title {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
 }

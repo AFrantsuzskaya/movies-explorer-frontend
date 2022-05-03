@@ -1,7 +1,6 @@
 .project {
   margin: 0 auto;
   width: 1140px;
-  padding-left: 50px;
 }
 
 .project__title {
@@ -14,7 +13,7 @@
   font-size: 22px;
   line-height: 26.63px;
   text-align: left;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.7px;
   border-bottom: 1px solid #000;
   padding-bottom: 22px;
 }
@@ -23,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   list-style: none;
-  padding: 35px 0;
+  padding: 34px 0;
 }
 
 .project__element {
@@ -37,7 +36,7 @@
   font-style: normal;
   font-size: 20px;
   line-height: 24px;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.8px;
   text-align: left;
 }
 
@@ -62,7 +61,7 @@
 }
 
 .project__scale-time {
-  background-color: #2be080;
+  background-color: #3456F3;
   height: 36px;
   color: #000;
   font-family: Inter;
@@ -98,7 +97,7 @@
   }
 
   .project__title {
-    padding-top: 91px;
+    padding-top: 90px;
     padding-bottom: 22px;
     letter-spacing: -1px;
   }
@@ -118,7 +117,7 @@
   }
 
   .project__scale {
-    padding-top: 15px;
+    padding-top: 16px;
     padding-bottom: 90px;
     display: grid;
     grid-template-columns: 140px 1fr;

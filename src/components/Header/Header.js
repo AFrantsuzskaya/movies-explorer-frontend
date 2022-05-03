@@ -26,22 +26,24 @@ function Header({ isOpen }) {
         pathname === "/movies" ||
         pathname === "/saved-movies" ? (
           <header className="header_type_profile">
-            <div className="header__link-box">
-              <Link className="header__logo-link" to="/">
-                <img className="header__logo-img" src={logo} alt="Логотип" />
-              </Link>
-              <div className="link__nav">
-                <Link className="link link link__movies" to="/movies">
-                  Фильмы
-                </Link>
-                <Link className="link link__saved-movies" to="/saved-movies">
-                  Сохранённые фильмы
-                </Link>
-              </div>
-            </div>
-            <Link className="link link__profile link__nav" to="/profile">
-              Аккаунт
+            <Link className="header__logo-link" to="/">
+              <img className="header__logo-img" src={logo} alt="Логотип" />
             </Link>
+            <div className="link__nav-movie">
+              <Link className="link link link__movies" to="/movies">
+                Фильмы
+              </Link>
+              <Link className="link link__saved-movies" to="/saved-movies">
+                Сохранённые фильмы
+              </Link>
+            </div>
+            <div className="link__account">
+              <p className="link__nav-name">Аккаунт</p>
+              <Link
+                className="link link__profile link__nav"
+                to="/profile"
+              ></Link>
+            </div>
             <button
               className="link header__menu"
               onClick={isOpen}
