@@ -1,0 +1,259 @@
+.header {
+  max-width: 1280px;
+  min-height: 74px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  padding: 18px 0 18px;
+  justify-content: space-between;
+  background-color: #DDDEE3;
+}
+
+.header_type_profile {
+  width: 1280px;
+  height: 74px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__link-box {
+  width: 294px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo-link {
+  width: 38px;
+  height: 38px;
+  margin-left: 71px;
+}
+
+.header__logo-link:hover {
+  transition: opacity 0.2s linear;
+  opacity: 0.8;
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+  margin: 0;
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  transform: opacity 0.2s linear;
+}
+
+.link:hover {
+  transform: opacity 0.2s linear;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.link__movies {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.link__saved-movies {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  padding-left: 16px;
+}
+
+.link__profile {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: center #F4F4F4 url('../../images/icon__COLOR_icon-main.svg') no-repeat;
+}
+
+.header__buttons {
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  margin-right: 69px;
+}
+
+.button {
+  color: #000;
+  font-family: Inter;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  transition: opacity 0.2s linear;
+  opacity: 0.8;
+}
+
+.header__button_type_signin {
+  background-color: #3456F3;
+  width: 76px;
+  height: 32px;
+  margin-left: 30px;
+  color: #fff;
+}
+
+.header__button_type_signup {
+  width: 77px;
+  height: 32px;
+}
+
+.header__buttons-hidden {
+  display: none;
+}
+
+.header__auth {
+  width: 396px;
+  margin: 0 auto;
+  padding: 50px 0 15px 4px;
+}
+
+.link__nav {
+  visibility: visible;
+}
+
+.header__menu {
+  display: none;
+}
+
+.link__account {
+  display: flex;
+  width: 97px;
+  height: 30px;
+  justify-content: space-between;
+  margin-right: 72px;
+}
+
+.link__nav-name {
+  width: 80px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+  margin: 0;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.link__nav-movie {
+  width: 212px;
+  padding-left: 60px;
+}
+
+@media screen and (max-width: 1279px) {
+  .header {
+    max-width: 768px;
+    padding-top: 16px;
+    padding-left: 0;
+  }
+
+  .header__logo-link {
+    margin-left: 30px;
+  }
+
+  .header__buttons {
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    margin-right: 30px;
+  }
+
+  .header_type_profile {
+    width: 708px;
+  }
+
+  .header__menu {
+    width: 44px;
+    height: 44px;
+    background-image: url("../../images/icon_menu.svg");
+    background-size: cover;
+    background-color: #fff;
+    border: none;
+  }
+
+  .link__nav-movie {
+    display: none;
+  }
+
+  .link__nav {
+    display: none;
+  }
+
+  .link__account{
+    display: none;
+  }
+  .header__menu {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    max-width: 320px;
+    padding:0 0 12px;
+  }
+
+  .header__logo-link {
+    margin-left: 14px;
+  }
+
+  .header_type_profile {
+    width: 292px;
+  }
+
+  .header__menu {
+    width: 40px;
+    height: 43px;
+    background: center url("../../images/icon__menu_min.svg");
+  }
+
+  .header__buttons {
+    margin-right: 14px;
+  }
+
+  .header__button_type_signin {
+    margin-right: 0;
+  }
+
+  .button {
+    font-size: 10px;
+  }
+
+  .header__button_type_signin {
+    width: 54px;
+    height: 26px;
+    margin-left: 8px;
+  }
+
+  .header__button_type_signup {
+    height: 26px;
+  }
+
+  .header__auth {
+    width: 320px;
+    margin: 0 auto;
+    padding: 35px 0 30px;
+    display: flex;
+    justify-content: center;
+  }
+}

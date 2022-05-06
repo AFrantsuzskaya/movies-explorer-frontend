@@ -1,0 +1,123 @@
+.profile {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.text {
+  font-family: "Inter";
+  color: #000;
+  font-style: normal;
+  margin: 0;
+}
+
+.profile__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  padding-top: 75px;
+}
+
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  width: 410px;
+  margin: 0 auto;
+  padding-top: 122px;
+}
+
+.profile__input {
+  width: 100%;
+  border: none;
+  text-align: end;
+  font-weight: 400;
+  padding-bottom: 16px;
+}
+
+.profile__input:focus {
+  outline: none;
+  border: none;
+}
+
+.profile__text {
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.profile__label {
+  width: 410px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 17px;
+}
+
+.profile__label:last-of-type {
+  border-bottom: none;
+}
+
+.profile__text_type_lable {
+  width: 141px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.profile__button {
+  border: none;
+  background-color: #fff;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 186px 0 13px;
+}
+
+.profile__exit-link {
+  text-decoration: none;
+  color: #ee3465;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile__title {
+    padding-top: 235px;
+  }
+
+  .profile__form {
+    padding-top: 97px;
+  }
+
+  .profile__button {
+    margin: 176px 0 13px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile__title {
+    padding-top: 70px;
+  }
+
+  .profile__form {
+    width: 260px;
+    padding-top: 80px;
+  }
+
+  .profile__button {
+    margin: 345px 0 13px;
+  }
+
+  .profile__label {
+    width: 260px;
+  }
+
+  .profile__button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .profile__exit-link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
