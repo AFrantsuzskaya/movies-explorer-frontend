@@ -74,6 +74,10 @@
   align-items: center;
 }
 
+.project__scale-time_type_white {
+  color: #fff;
+}
+
 .project__scale-time:nth-child(2) {
   background-color: #f2f2f2;
 }

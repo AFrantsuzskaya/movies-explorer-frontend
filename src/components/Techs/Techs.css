@@ -131,6 +131,7 @@
   .techs {
     max-width: 320px;
     height: 651px;
+    background-color: #fff;
   }
 
   .techs__container {

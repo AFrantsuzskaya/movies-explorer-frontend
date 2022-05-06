@@ -168,7 +168,7 @@
   }
 
   .header__logo-link {
-    margin-left: 0;
+    margin-left: 30px;
   }
 
   .header__buttons {
@@ -211,6 +211,10 @@
   .header {
     max-width: 320px;
     padding:0 0 12px;
+  }
+
+  .header__logo-link {
+    margin-left: 14px;
   }
 
   .header_type_profile {
