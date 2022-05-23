@@ -4,7 +4,24 @@ class Api {
   }
 
   getUserInfo() {
-    return this._get("users/me");
+    return fetch(`http://84.252.136.67:3001/users/me`, {
+         method: 'GET',
+        credentials: 'same-origin',
+         headers: {
+         Accept: 'application/json',
+          'Content-Type': 'application/json',
+          //'Access-Control-Allow-Credentials': true,
+          }
+     })
+     .then(res => {
+       console.log(document.cookie)
+       console.log(res)
+       if (res.ok) {
+        return res.json();
+     } 
+        return Promise.reject("ошибка СЕРВЕРА");
+    })
+   //return this._get("users/me");
   }
 
   getMovies() {
@@ -55,6 +72,7 @@ class Api {
         "Content-Type": "application/json",
       },
     };
+    console.log(query)
     return fetch(this.createUrl(query), options).then(this._checkResponse);
   }
 
@@ -64,6 +82,7 @@ class Api {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
+        'Access-Control-Allow-Credentials': true,
       },
       body: JSON.stringify(body),
     };
@@ -81,7 +100,8 @@ class Api {
 }
 
 const api = new Api({
-  address: "https://backend.movies.students.nomoredomains.xyz",
+  address: "http://84.252.136.67:3001",
 });
 
 export default api;
+// address: "https://backend.movies.students.nomoredomains.xyz",

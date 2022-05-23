@@ -1,12 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import {FormValidator} from "../../hooks/FormValidator";
 
-function Login() {
+function Login({onLogin}) {
+
+  const {values, handleChange, resetFrom, errors, isValid} = FormValidator();
+
+  function handleSubmit(e){
+    e.preventDefault();
+    onLogin(values);
+  }
   return (
     <section className="login">
       <h2 className="login__title">Рады видеть!</h2>
-      <form className="login__form">
+      <form className="login__form" onSubmit={handleSubmit}>
         <label className="login__label">
           <p className="login__input-name">E-mail</p>
           <input
@@ -19,8 +27,13 @@ function Login() {
             required
             minLength="6"
             maxLength="50"
+            value={values.email || ''}
+            onChange={handleChange}
+            errors={errors}
           />
-          <span id="email-error" className="login__input-error"></span>
+          <span id="email-error" className="login__input-error">
+          {errors.email}
+          </span>
         </label>
         <label className="login__label">
           <p className="login__input-name">Пароль</p>
@@ -34,15 +47,18 @@ function Login() {
             required
             minLength="8"
             maxLength="50"
+            value={values.password || ''}
+            onChange={handleChange}
+            errors={errors}
           />
           <span id="password-error" className="login__input-error">
-            Что-то пошло не так...
+          {errors.password}
           </span>
         </label>
-        <button type="submit" className="link login__button">
-          <Link className="login__button" to="/profile">
+        <button type="submit" className="link login__button" disabled={!isValid}>
+          {/*<Link className="login__button" to="/profile">*/}
             Войти
-          </Link>
+          {/*</Link>*/}
         </button>
       </form>
       <p className="login__text">

@@ -3,13 +3,13 @@ import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
-function Movies() {
+function Movies({ cards }) {
   const [isLoading, setIsLoading] = useState(false);
   
   return (
     <section className="movies">
       <SearchForm />
-      <MoviesCardList isLoading={isLoading} />
+      <MoviesCardList cards={cards} isLoading={isLoading} />
     </section>
   );
 }

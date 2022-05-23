@@ -65,7 +65,7 @@
 }
 
 .register__button {
-  margin: 110px 0 10px;
+  margin: 40px 0 10px;
   width: 396px;
   height: 45px;
   border: none;
@@ -78,6 +78,10 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
+}
+
+.register__button:disabled {
+  background-color: #a0a0a0;
 }
 
 .register__text {
@@ -95,6 +99,23 @@
 .login__navigation {
   color: #3456F3;
   text-decoration: none;
+}
+
+.register__input-error {
+  display: inline-block;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+  padding-top: 10px;
+}
+
+.register__form-error {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 12px;
+  color: #ee3465;
+  margin-top: 70px;
+  text-align: center;
 }
 
 @media screen and (max-width: 767px) {

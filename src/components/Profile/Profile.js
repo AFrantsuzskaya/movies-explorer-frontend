@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Profile.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Profile() {
+  const currentUser = React.useContext(CurrentUserContext);
+
+  
   return (
     <section className="profile">
-      <h2 className="profile__title text">Привет, Виталий!</h2>
+      <h2 className="profile__title text">Привет, {currentUser.name}!</h2>
       <form className="profile__form">
         <div className="profile__label">
           <label className="text profile__text profile__text_type_lable">
@@ -16,7 +20,7 @@ function Profile() {
             type="text"
             id="name"
             name="name"
-            placeholder="Виталий"
+            placeholder={currentUser.name}
             autoComplete="off"
             required
             minLength="2"
@@ -33,7 +37,7 @@ function Profile() {
             type="email"
             id="email"
             name="email"
-            placeholder="pochta@yandex.ru"
+            placeholder={currentUser.email}
             autoComplete="off"
             required
             minLength="8"

@@ -7,7 +7,7 @@ function SavedMovies() {
   return (
     <section className="saved-movie">
       <SearchForm />
-      <MoviesCardList />
+      {/*<MoviesCardList />*/}
     </section>
   );
 };

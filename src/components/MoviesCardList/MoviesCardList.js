@@ -5,7 +5,8 @@ import { moviesCard, moviesCardSaved } from "../../utils/moviesCard";
 import Preloader from "../Preloader/Preloader";
 import "./MoviesCardList.css";
 
-function MoviesCardList({ isLoading }) {
+
+function MoviesCardList({ isLoading, cards }) {
   const { pathname } = useLocation();
   const list = pathname === "/movies" ? moviesCard : moviesCardSaved;
   const buttonMovies = `${
@@ -13,7 +14,8 @@ function MoviesCardList({ isLoading }) {
       ? "link movies-list__button"
       : "movies-list__button_hidden"
   }`;
-  
+
+  //console.log(cards)
   return (
     <section className="movies-list">
       
@@ -21,8 +23,9 @@ function MoviesCardList({ isLoading }) {
           <Preloader />
         ) : (
           <ul className="movies-list__box">
-          {list.map((movie) => {
-            return <MoviesCard card={movie} />;
+          {cards.map((movie) => {
+           // console.log(movie)
+            return <MoviesCard key={movie.id} card={movie} />;
           })}
           </ul>
         )}
