@@ -45,14 +45,20 @@
 }
 
 .profile__label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 17px;
+}
+
+.profile__input-container {
   width: 410px;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #e8e8e8;
-  margin-bottom: 17px;
 }
 
-.profile__label:last-of-type {
+.profile__input-container:last-of-type {
   border-bottom: none;
 }
 

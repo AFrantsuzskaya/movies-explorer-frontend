@@ -1,107 +1,120 @@
-class Api {
-  constructor({ address }) {
-    this._address = address;
-  }
+const BASE_URL = "https://backend.movies.students.nomoredomains.xyz";
 
-  getUserInfo() {
-    return fetch(`http://84.252.136.67:3001/users/me`, {
-         method: 'GET',
-        credentials: 'same-origin',
-         headers: {
-         Accept: 'application/json',
-          'Content-Type': 'application/json',
-          //'Access-Control-Allow-Credentials': true,
-          }
-     })
-     .then(res => {
-       console.log(document.cookie)
-       console.log(res)
-       if (res.ok) {
-        return res.json();
-     } 
-        return Promise.reject("ошибка СЕРВЕРА");
-    })
-   //return this._get("users/me");
-  }
-
-  getMovies() {
-    const res = this._get("movies");
-    return res;
-  }
-
-  setUserInfo(name, email) {
-    return this._set("users/me", "PATCH", { name, email });
-  }
-
-  setMovie(
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailerLink,
-    thumbnail,
-    movieId,
-    nameRU,
-    nameEN
-  ) {
-    return this._set("movies", "POST", {
-      country,
-      director,
-      duration,
-      year,
-      description,
-      image,
-      trailerLink,
-      thumbnail,
-      movieId,
-      nameRU,
-      nameEN,
-    });
-  }
-
-  removeMovie(id) {
-    return this._set(`movies/${id}`, "DELETE", {});
-  }
-
-  _get(query) {
-    const options = {
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    console.log(query)
-    return fetch(this.createUrl(query), options).then(this._checkResponse);
-  }
-
-  _set(query, method, body) {
-    const options = {
-      method,
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Credentials': true,
-      },
-      body: JSON.stringify(body),
-    };
-    return fetch(this.createUrl(query), options).then(this._checkResponse);
-  }
-
-  _checkResponse(res) {
-    console.log(res);
-    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
-  }
-
-  createUrl(query) {
-    return `${this._address}/${query}`;
-  }
+function checkResponse(res) {
+  return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 }
 
-const api = new Api({
-  address: "http://84.252.136.67:3001",
-});
+export const register = ({ name, email, password }) => {
+  return fetch(`${BASE_URL}/signup`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email, password }),
+  }).then(checkResponse);
+};
 
-export default api;
-// address: "https://backend.movies.students.nomoredomains.xyz",
+export const authorize = ({ password, email }) => {
+  return fetch(`${BASE_URL}/signin`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ password, email }),
+  })
+    .then((res) => {
+      return res;
+    })
+    .then(checkResponse)
+    .then((data) => {
+      return data;
+    });
+};
+
+export const getUserInfo = () => {
+  return fetch(`${BASE_URL}/users/me`, {
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+    .then(checkResponse)
+    .then((data) => data);
+};
+
+export const updateUserInfo = ({ name, email }) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email }),
+  }).then(checkResponse);
+};
+
+export const logout = () => {
+  return fetch(`${BASE_URL}/signout`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }).then((res) => checkResponse(res));
+};
+
+export const setMovie = (movie) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      country: movie.country || "",
+      director: movie.director || "",
+      duration: movie.duration || "",
+      year: movie.year || "",
+      description: movie.description || "",
+      image: `https://api.nomoreparties.co${movie.image.url}` || "",
+      trailerLink: movie.trailerLink || "",
+      thumbnail:
+        `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}` ||
+        "",
+      movieId: movie.id || "",
+      nameRU: movie.nameRU || "",
+      nameEN: movie.nameEN || "",
+    }),
+  }).then((res) => checkResponse(res));
+};
+
+export const getSavedMovies = () => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }).then((res) => checkResponse(res));
+};
+
+export const removeMovie = (movieId) => {
+  console.log(movieId);
+  return fetch(`${BASE_URL}/movies/${movieId}`, {
+    method: "DELETE",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }).then((res) => checkResponse(res));
+};

@@ -13,11 +13,11 @@ export function FormValidator() {
     const regEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     
     setValues({ ...values, [name]: value });
-   // setErrors({ ...errors, [name]: input.validationMessage });
+  
     setIsValid(input.closest("form").checkValidity());
    
     if (name === 'name') {
-      console.log(name)
+      
       if (regName.test(value)) {
         setErrors({...errors, [name]: input.validationMessage})
       } else {
@@ -45,5 +45,5 @@ export function FormValidator() {
     [setValues, setErrors, setIsValid]
   );
 
-  return { values, handleChange, resetFrom, errors, isValid };
+  return { values, handleChange, resetFrom, errors, isValid, setIsValid, setValues };
 }

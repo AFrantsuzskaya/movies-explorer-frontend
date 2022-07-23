@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
-import {FormValidator} from "../../hooks/FormValidator";
+import { FormValidator } from "../../hooks/FormValidator";
 
-function Login({onLogin}) {
-
-  const {values, handleChange, resetFrom, errors, isValid} = FormValidator();
-
-  function handleSubmit(e){
+function Login({ onLogin, errorMessage }) {
+  const { values, handleChange, errors, isValid } = FormValidator();
+  function handleSubmit(e) {
     e.preventDefault();
     onLogin(values);
   }
+
   return (
     <section className="login">
       <h2 className="login__title">Рады видеть!</h2>
@@ -27,12 +26,12 @@ function Login({onLogin}) {
             required
             minLength="6"
             maxLength="50"
-            value={values.email || ''}
+            value={values.email || ""}
             onChange={handleChange}
             errors={errors}
           />
           <span id="email-error" className="login__input-error">
-          {errors.email}
+            {errors.email}
           </span>
         </label>
         <label className="login__label">
@@ -47,18 +46,23 @@ function Login({onLogin}) {
             required
             minLength="8"
             maxLength="50"
-            value={values.password || ''}
+            value={values.password || ""}
             onChange={handleChange}
             errors={errors}
           />
           <span id="password-error" className="login__input-error">
-          {errors.password}
+            {errors.password}
           </span>
         </label>
-        <button type="submit" className="link login__button" disabled={!isValid}>
-          {/*<Link className="login__button" to="/profile">*/}
-            Войти
-          {/*</Link>*/}
+        <span id="button-error" className="register__form-error">
+          {errorMessage.message}
+        </span>
+        <button
+          type="submit"
+          className="link login__button"
+          disabled={!isValid}
+        >
+          Войти
         </button>
       </form>
       <p className="login__text">

@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import "./Header.css";
 
-function Header({ isOpen }) {
+function Header({ isOpen, loggedIn }) {
   const { pathname } = useLocation();
   const pathNav = `${
     pathname === "/signup" || pathname === "/signin"
@@ -13,7 +13,11 @@ function Header({ isOpen }) {
   const pathWidth = `${
     pathname === "/signup" || pathname === "/signin" ? "header__auth" : "header"
   }`;
+  
 
+  const loggedInState = pathname === '/' && loggedIn;
+  console.log(loggedIn)
+  console.log(loggedInState)
   return (
     <>
       {pathname === "/profile" ||
@@ -21,7 +25,7 @@ function Header({ isOpen }) {
       pathname === "/movies" ||
       pathname === "/saved-movies" ||
       pathname === "/signin" ||
-      pathname === "/signup" ? (
+      pathname === "/signup" ? (loggedIn && pathname === "/" ||
         pathname === "/profile" ||
         pathname === "/movies" ||
         pathname === "/saved-movies" ? (
