@@ -3,9 +3,8 @@ import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import moviesApi from "../../utils/MoviesApi";
-import {filterShortMovies, filterNameMovies} from "../../utils/constants";
+import { filterShortMovies, filterNameMovies } from "../../utils/constants";
 import Preloader from "../Preloader/Preloader";
-
 
 function Movies({
   onClickLike,
@@ -14,7 +13,6 @@ function Movies({
   savedMoviesItems,
   isLoading,
 }) {
-
   const [shortFilmsList, setShortFilmsList] = useState([]);
   const [isChecked, setIsChecked] = useState(
     JSON.parse(localStorage.getItem("isCheckbox")) || false
@@ -30,15 +28,15 @@ function Movies({
 
   // получение фильмов
   React.useEffect(() => {
-   let filmsList = filteredMoviesList;
-    console.log(filteredMoviesList)
-    
+    let filmsList = filteredMoviesList;
+    console.log(filteredMoviesList);
+
     if (isChecked === true) {
       filmsList = filterShortMovies(filmsList);
-      } 
-    if(searchText){
-      filmsList = filterNameMovies(searchText, filmsList)
-      if(filmsList.length === 0) {
+    }
+    if (searchText) {
+      filmsList = filterNameMovies(searchText, filmsList);
+      if (filmsList.length === 0) {
         setErrorFormMessage({
           show: true,
           message: "Ничего не найдено",
@@ -47,8 +45,8 @@ function Movies({
         setErrorFormMessage({ show: false, message: "" });
       }
     }
-      setShortFilmsList(filmsList);
-    }, [isChecked, filteredMoviesList, searchText]);
+    setShortFilmsList(filmsList);
+  }, [isChecked, filteredMoviesList, searchText]);
 
   //переключение чекбокса
   function changeCheckbox() {
@@ -59,11 +57,14 @@ function Movies({
   //  форма поиска фильмов
   function handleFilterMovies(values) {
     if (values) {
-     setSearchText(values)
-
+      setSearchText(values);
       moviesApi()
         .then((movie) => {
-          const filterFilmsList = filterNameMovies(searchText, movie);
+          const filterFilmsList = movie.filter((el) => {
+            return String(el.nameRU)
+              .toLowerCase()
+              .includes(values.toLowerCase());
+          });
           localStorage.setItem("list", JSON.stringify(filterFilmsList));
           localStorage.setItem("searchQwery", values);
           if (filterFilmsList.length === 0) {
@@ -106,16 +107,20 @@ function Movies({
         isChecked={isChecked}
         handleFilterMovies={handleFilterMovies}
       />
-      {isLoading ? (<Preloader/>) : (<MoviesCardList
-        cards={shortFilmsList}
-        isLoading={isLoading}
-        errorFormMessage={errorFormMessage}
-        onClickLike={onClickLike}
-        onDeleteClick={onDeleteClick}
-        savedCardsList={savedCardsList}
-        savedMoviesItems={savedMoviesItems}
-        isLoading={isLoading}
-      />)}
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <MoviesCardList
+          cards={shortFilmsList}
+          isLoading={isLoading}
+          errorFormMessage={errorFormMessage}
+          onClickLike={onClickLike}
+          onDeleteClick={onDeleteClick}
+          savedCardsList={savedCardsList}
+          savedMoviesItems={savedMoviesItems}
+          isLoading={isLoading}
+        />
+      )}
     </section>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 import { FormValidator } from "../../hooks/FormValidator";
 
-function Login({ onLogin, errorMessage }) {
+function Login({ onLogin, errorMessage, disable }) {
   const { values, handleChange, errors, isValid } = FormValidator();
   function handleSubmit(e) {
     e.preventDefault();
@@ -13,7 +13,7 @@ function Login({ onLogin, errorMessage }) {
   return (
     <section className="login">
       <h2 className="login__title">Рады видеть!</h2>
-      <form className="login__form" onSubmit={handleSubmit}>
+      <form className="login__form" onSubmit={handleSubmit} disable={disable}>
         <label className="login__label">
           <p className="login__input-name">E-mail</p>
           <input

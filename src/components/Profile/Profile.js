@@ -13,6 +13,10 @@ function Profile({ update, errorMessage, handleLogout, setErrorMessage }) {
         name: currentUser.name,
         email: currentUser.email,
       })
+      setErrorMessage({
+        show: false,
+        message: '',
+      })
     }
   }, [currentUser]);
 
@@ -29,10 +33,6 @@ function Profile({ update, errorMessage, handleLogout, setErrorMessage }) {
 
   function handleSignout() {
     handleLogout();
-    setErrorMessage({
-      show: false,
-      message: '',s
-    })
   }
 
   return (

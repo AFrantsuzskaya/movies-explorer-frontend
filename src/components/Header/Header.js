@@ -14,10 +14,6 @@ function Header({ isOpen, loggedIn }) {
     pathname === "/signup" || pathname === "/signin" ? "header__auth" : "header"
   }`;
   
-
-  const loggedInState = pathname === '/' && loggedIn;
-  console.log(loggedIn)
-  console.log(loggedInState)
   return (
     <>
       {pathname === "/profile" ||

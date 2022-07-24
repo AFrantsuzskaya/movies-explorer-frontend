@@ -28,6 +28,7 @@ function App() {
   const [savedCardsList, setSavedCardsList] = useState([]);
   const [savedMoviesItems, setSavedMoviesItems] = useState([]);
   const [isLoading, setisLoading] = React.useState(false);
+  const [disable, setDisable] = useState(false);
 
   function getLoad_loggedIn() {
     if (loggedIn === null) {
@@ -51,13 +52,12 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem("loggedIn", loggedIn);
+    localStorage.getItem("loggedIn");
     if(loggedIn){
       setisLoading(true);
       MainApi.getUserInfo()
       .then((userData) => {
         if (userData) {
-          setLoggedIn(true);
           setCurrentUser(userData);
           setLoggedIn(true);
         } else {
@@ -74,6 +74,7 @@ function App() {
         setLoggedIn(false);
       })
       .finally(() => setisLoading(false));
+
     MainApi.getSavedMovies()
       .then((res) => {
         setSavedCardsList(res);
@@ -99,6 +100,7 @@ function App() {
 
   //регистрация
   function handleRegister({ password, email, name }) {
+    setDisable(true);
     MainApi.register({ password, email, name })
       .then((res) => {
         if (res._id) {
@@ -120,7 +122,7 @@ function App() {
             message: "Ошибка сервера, попробуйте зарегистроваться позже",
           });
         }
-      });
+      }).finally(()=> setDisable(false));
   }
 
   function handleLogin({ password, email }) {
@@ -136,6 +138,7 @@ function App() {
           setErrorMessage("Ошибка входа");
           setLoggedIn(false);
         }
+        localStorage.setItem("loggedIn", JSON.stringify(loggedIn));
       })
       .catch((res) => {
         if (res === "Ошибка: 401") {
@@ -154,10 +157,6 @@ function App() {
   }
 
   function updateUser(userNewData) {
-    setErrorMessage({
-      show: false,
-      message: "",
-    });
     MainApi.updateUserInfo(userNewData)
       .then((userNewData) => {
         setCurrentUser(userNewData);
@@ -291,6 +290,7 @@ function App() {
                   onLogin={handleLogin}
                   errorMessage={errorMessage}
                   getMovies={getMovies}
+                  disable={disable}
                 />
               )
             }
