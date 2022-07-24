@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 import { FormValidator } from "../../hooks/FormValidator";
 
-function Register({ onRegister, errorMessage }) {
-  const { values, handleChange, errors, isValid, disabled } = FormValidator();
+function Register({ onRegister, errorMessage, disabled}) {
+  const { values, handleChange, errors, isValid } = FormValidator();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,7 +14,7 @@ function Register({ onRegister, errorMessage }) {
   return (
     <section className="register">
       <h2 className="register__title">Добро пожаловать!</h2>
-      <form className="register__form" onSubmit={handleSubmit} disabled>
+      <form className="register__form" onSubmit={handleSubmit} >
         <label className="register__label">
           <p className="register__input-name">Имя</p>
           <input
@@ -79,7 +79,7 @@ function Register({ onRegister, errorMessage }) {
         <button
           type="submit"
           className="link register__button"
-          disabled={!isValid}
+          disabled={!isValid || disabled}
         >
           Зарегистрироваться
         </button>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 import { FormValidator } from "../../hooks/FormValidator";
 
-function Login({ onLogin, errorMessage, disable }) {
+function Login({ onLogin, errorMessage, disabled }) {
   const { values, handleChange, errors, isValid } = FormValidator();
   function handleSubmit(e) {
     e.preventDefault();
@@ -60,7 +60,7 @@ function Login({ onLogin, errorMessage, disable }) {
         <button
           type="submit"
           className="link login__button"
-          disabled={!isValid}
+          disabled={!isValid || disabled}
         >
           Войти
         </button>

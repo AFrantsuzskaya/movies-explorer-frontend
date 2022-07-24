@@ -28,7 +28,7 @@ function App() {
   const [savedCardsList, setSavedCardsList] = useState([]);
   const [savedMoviesItems, setSavedMoviesItems] = useState([]);
   const [isLoading, setisLoading] = React.useState(false);
-  const [disable, setDisable] = useState(false);
+  const [disabled, setDisabled] = useState(true);
 
   function getLoad_loggedIn() {
     if (loggedIn === null) {
@@ -53,7 +53,7 @@ function App() {
 
   React.useEffect(() => {
     localStorage.setItem("loggedIn", loggedIn);
-    console.log(loggedIn)
+    console.log(loggedIn);
     if (loggedIn === true) {
       setisLoading(true);
       MainApi.getUserInfo()
@@ -85,7 +85,6 @@ function App() {
           console.log(err.status);
         });
     }
-
   }, [loggedIn]);
 
   function getMovies() {
@@ -102,7 +101,7 @@ function App() {
 
   //регистрация
   function handleRegister({ password, email, name }) {
-    setDisable(true);
+    setDisabled(true);
     MainApi.register({ password, email, name })
       .then((res) => {
         if (res._id) {
@@ -125,10 +124,11 @@ function App() {
           });
         }
       })
-      .finally(() => setDisable(false));
+      .finally(() => setDisabled(false));
   }
 
   function handleLogin({ password, email }) {
+    setDisabled(true);
     MainApi.authorize({ password, email })
       .then((data) => {
         if (data) {
@@ -152,10 +152,12 @@ function App() {
           });
         }
         setLoggedIn(false);
-      });
+      })
+      .finally(() => setDisabled(false));
   }
 
   function updateUser(userNewData) {
+    setDisabled(true);
     MainApi.updateUserInfo(userNewData)
       .then((userNewData) => {
         setCurrentUser(userNewData);
@@ -176,7 +178,8 @@ function App() {
             message: "Ошибка сервера, попробуйте позже",
           });
         }
-      });
+      })
+      .finally(() => setDisabled(false));
   }
 
   function handleLogout(event) {
@@ -280,6 +283,7 @@ function App() {
                   update={updateUser}
                   handleLogout={handleLogout}
                   errorMessage={errorMessage}
+                  disabled={disabled}
                 />
               </RequireAuth>
             }
@@ -294,7 +298,7 @@ function App() {
                   onLogin={handleLogin}
                   errorMessage={errorMessage}
                   getMovies={getMovies}
-                  disable={disable}
+                  disabled={disabled}
                 />
               )
             }
@@ -308,6 +312,7 @@ function App() {
                 <Register
                   onRegister={handleRegister}
                   errorMessage={errorMessage}
+                  disabled={disabled}
                 />
               )
             }
