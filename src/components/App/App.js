@@ -43,7 +43,7 @@ function App() {
       return loggedIn;
     }
   }
-  
+
   React.useEffect(() => {
     let logged = localStorage.getItem("loggedIn");
     logged === false || logged === null
@@ -52,38 +52,40 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    localStorage.getItem("loggedIn");
-    if(loggedIn){
+    localStorage.setItem("loggedIn", loggedIn);
+    console.log(loggedIn)
+    if (loggedIn === true) {
       setisLoading(true);
       MainApi.getUserInfo()
-      .then((userData) => {
-        if (userData) {
-          setCurrentUser(userData);
-          setLoggedIn(true);
-        } else {
-          console.log("не возможно авторизоваться");
-        }
-      })
-      .catch((res) => {
-        setLoggedIn(false);
-        if (res === "Ошибка: 401") {
-          console.log("необходимa авторизация");
-        } else {
-          console.log("ошибка получения данных пользователя");
-        }
-        setLoggedIn(false);
-      })
-      .finally(() => setisLoading(false));
+        .then((userData) => {
+          if (userData) {
+            setCurrentUser(userData);
+            setLoggedIn(true);
+          } else {
+            console.log("не возможно авторизоваться");
+          }
+        })
+        .catch((res) => {
+          setLoggedIn(false);
+          if (res === "Ошибка: 401") {
+            console.log("необходимa авторизация");
+          } else {
+            console.log("ошибка получения данных пользователя");
+          }
+          setLoggedIn(false);
+        })
+        .finally(() => setisLoading(false));
 
-    MainApi.getSavedMovies()
-      .then((res) => {
-        setSavedCardsList(res);
-        setSavedMoviesItems(res.map((el) => el.movieId));
-      })
-      .catch((err) => {
-        console.log(err.status);
-      });
+      MainApi.getSavedMovies()
+        .then((res) => {
+          setSavedCardsList(res);
+          setSavedMoviesItems(res.map((el) => el.movieId));
+        })
+        .catch((err) => {
+          console.log(err.status);
+        });
     }
+
   }, [loggedIn]);
 
   function getMovies() {
@@ -95,7 +97,7 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
       })
-      .finally(()=> setisLoading(true)(false));
+      .finally(() => setisLoading(true)(false));
   }
 
   //регистрация
@@ -122,14 +124,11 @@ function App() {
             message: "Ошибка сервера, попробуйте зарегистроваться позже",
           });
         }
-      }).finally(()=> setDisable(false));
+      })
+      .finally(() => setDisable(false));
   }
 
   function handleLogin({ password, email }) {
-    setErrorMessage({
-      show: false,
-      message: "",
-    });
     MainApi.authorize({ password, email })
       .then((data) => {
         if (data) {
@@ -188,6 +187,11 @@ function App() {
         localStorage.removeItem("isCheckbox");
         localStorage.removeItem("searchQwery");
         localStorage.removeItem("list");
+        localStorage.removeItem("loggedIn");
+        setErrorMessage({
+          show: false,
+          message: "",
+        });
       })
       .catch((err) => {
         console.log("err logout:", err);
@@ -215,12 +219,12 @@ function App() {
           setSavedMoviesItems([el.movieId, ...savedMoviesItems]);
         })
         .catch((err) => console.log(err, "не работает сохрание фильма"))
-        .finally(()=> setisLoading(false));
+        .finally(() => setisLoading(false));
     }
   }
 
   function handleRemoveMovie(movie) {
-    setisLoading(true)
+    setisLoading(true);
     MainApi.removeMovie(movie._id)
       .then((res) => {
         const list = savedCardsList.filter((el) =>
@@ -230,7 +234,7 @@ function App() {
         setSavedMoviesItems(list.map((e) => e.movieId));
       })
       .catch((err) => console.log(err))
-      .finally(()=> setisLoading(false));
+      .finally(() => setisLoading(false));
   }
 
   return (

@@ -84,7 +84,7 @@ function Profile({ update, errorMessage, handleLogout, setErrorMessage }) {
             {errors.email}
           </span>
         </label>
-        <span id="button-error" className="register__form-error">
+        <span id="button-error-profole" className="profile__form-error">
           {errorMessage.message}
         </span>
         <button className="link text profile__button" disabled={!isValid}>
