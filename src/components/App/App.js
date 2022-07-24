@@ -28,7 +28,7 @@ function App() {
   const [savedCardsList, setSavedCardsList] = useState([]);
   const [savedMoviesItems, setSavedMoviesItems] = useState([]);
   const [isLoading, setisLoading] = React.useState(false);
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
   function getLoad_loggedIn() {
     if (loggedIn === null) {
