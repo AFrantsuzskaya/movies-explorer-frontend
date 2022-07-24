@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import "./SavedMovies.css";
+import { filterShortMovies, filterNameMovies } from "../../utils/constants";
+import Preloader from "../Preloader/Preloader";
 
 function SavedMovies({
   isLoading,
@@ -42,18 +44,6 @@ function SavedMovies({
     setChecked(!checked);
   }
 
-  function filterShortMovies(cardsList) {
-    const newCardsList = cardsList.filter((el) => el.duration < 40);
-    return newCardsList;
-  }
-
-  function filterNameMovies(values, cardsList) {
-    const filterFilmsList = cardsList.filter((el) => {
-      return String(el.nameRU).toLowerCase().includes(values.toLowerCase());
-    });
-    return filterFilmsList;
-  }
-
   function handleFilterSavedMovies(val) {
     if (val) {
       setSearchText(val);
@@ -72,7 +62,9 @@ function SavedMovies({
         isChecked={checked}
         handleFilterMovies={handleFilterSavedMovies}
       />
-      {
+      {isLoading ? (
+        <Preloader />
+      ) : (
         <MoviesCardList
           isLoading={isLoading}
           errorFormMessage={errorFormMessage}
@@ -80,7 +72,7 @@ function SavedMovies({
           handleRemoveMovie={handleRemoveMovie}
           savedMoviesItems={savedMoviesItems}
         />
-      }
+      )}
     </section>
   );
 }

@@ -1,12 +1,20 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { FormValidator } from "../../hooks/FormValidator";
 
-function Profile({ update, errorMessage, handleLogout }) {
+function Profile({ update, errorMessage, handleLogout, setErrorMessage }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const { values, handleChange, errors, isValid, setIsValid } = FormValidator();
+  const { values, handleChange, errors, isValid, setIsValid, setValues } = FormValidator();
+  
+  React.useEffect(() => {
+    if(values) {
+      setValues({
+        name: currentUser.name,
+        email: currentUser.email,
+      })
+    }
+  }, [currentUser]);
 
   React.useEffect(()=> {
     if (currentUser.name === values.name && currentUser.email === values.email) {
@@ -21,6 +29,10 @@ function Profile({ update, errorMessage, handleLogout }) {
 
   function handleSignout() {
     handleLogout();
+    setErrorMessage({
+      show: false,
+      message: '',s
+    })
   }
 
   return (
@@ -35,7 +47,7 @@ function Profile({ update, errorMessage, handleLogout }) {
               type="text"
               id="name"
               name="name"
-              placeholder={currentUser.name}
+              placeholder='Имя'
               autoComplete="off"
               required
               minLength="2"
@@ -59,7 +71,7 @@ function Profile({ update, errorMessage, handleLogout }) {
               type="email"
               id="email"
               name="email"
-              placeholder={currentUser.email}
+              placeholder="Email"
               autoComplete="off"
               required
               minLength="8"

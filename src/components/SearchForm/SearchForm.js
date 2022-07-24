@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SearchForm.css";
 import { FormValidator } from "../../hooks/FormValidator";
 import { useLocation } from "react-router-dom";
 
 function SearchForm({ isChecked, changeCheckbox, handleFilterMovies }) {
-  const { values, handleChange, errors, isValid, setValues } = FormValidator();
+  const { values, handleChange, setValues } = FormValidator();
   const { pathname } = useLocation();
 
   React.useEffect(() => {

@@ -25,7 +25,7 @@ function Header({ isOpen, loggedIn }) {
       pathname === "/movies" ||
       pathname === "/saved-movies" ||
       pathname === "/signin" ||
-      pathname === "/signup" ? (loggedIn && pathname === "/" ||
+      pathname === "/signup" ? ((loggedIn && pathname === "/") ||
         pathname === "/profile" ||
         pathname === "/movies" ||
         pathname === "/saved-movies" ? (

@@ -3,6 +3,9 @@ import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import moviesApi from "../../utils/MoviesApi";
+import {filterShortMovies, filterNameMovies} from "../../utils/constants";
+import Preloader from "../Preloader/Preloader";
+
 
 function Movies({
   onClickLike,
@@ -23,15 +26,29 @@ function Movies({
   const [filteredMoviesList, setFilteredMoviesList] = useState(
     JSON.parse(localStorage.getItem("list")) || []
   );
+  const [searchText, setSearchText] = useState("");
 
   // получение фильмов
   React.useEffect(() => {
-    if (isChecked === false) {
-      setShortFilmsList(filteredMoviesList);
-    } else {
-      filterShortMovies(filteredMoviesList);
+   let filmsList = filteredMoviesList;
+    console.log(filteredMoviesList)
+    
+    if (isChecked === true) {
+      filmsList = filterShortMovies(filmsList);
+      } 
+    if(searchText){
+      filmsList = filterNameMovies(searchText, filmsList)
+      if(filmsList.length === 0) {
+        setErrorFormMessage({
+          show: true,
+          message: "Ничего не найдено",
+        });
+      } else {
+        setErrorFormMessage({ show: false, message: "" });
+      }
     }
-  }, [isChecked]);
+      setShortFilmsList(filmsList);
+    }, [isChecked, filteredMoviesList, searchText]);
 
   //переключение чекбокса
   function changeCheckbox() {
@@ -39,23 +56,14 @@ function Movies({
     localStorage.setItem("isCheckbox", JSON.stringify(!isChecked));
   }
 
-  //фильтр короткометражных фильмов
-  function filterShortMovies(cards) {
-    const newCardsList = cards.filter((el) => el.duration < 40);
-    setShortFilmsList(newCardsList);
-    return newCardsList;
-  }
-
   //  форма поиска фильмов
   function handleFilterMovies(values) {
     if (values) {
+     setSearchText(values)
+
       moviesApi()
         .then((movie) => {
-          const filterFilmsList = movie.filter((el) => {
-            return String(el.nameRU)
-              .toLowerCase()
-              .includes(values.toLowerCase());
-          });
+          const filterFilmsList = filterNameMovies(searchText, movie);
           localStorage.setItem("list", JSON.stringify(filterFilmsList));
           localStorage.setItem("searchQwery", values);
           if (filterFilmsList.length === 0) {
@@ -98,7 +106,7 @@ function Movies({
         isChecked={isChecked}
         handleFilterMovies={handleFilterMovies}
       />
-      <MoviesCardList
+      {isLoading ? (<Preloader/>) : (<MoviesCardList
         cards={shortFilmsList}
         isLoading={isLoading}
         errorFormMessage={errorFormMessage}
@@ -107,7 +115,7 @@ function Movies({
         savedCardsList={savedCardsList}
         savedMoviesItems={savedMoviesItems}
         isLoading={isLoading}
-      />
+      />)}
     </section>
   );
 }

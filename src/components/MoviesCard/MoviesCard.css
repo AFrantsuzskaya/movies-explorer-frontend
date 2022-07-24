@@ -64,7 +64,6 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  opacity: 0;
   color: #000;
   font-family: "Inter";
   font-style: normal;
@@ -96,7 +95,6 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  opacity: 0;
 }
 
 /*.movie__button:checked::before {
@@ -112,7 +110,6 @@
   -webkit-appearance: none;
   transition: 0.5s;
   background: center #f9f9f9 url("../../images/flag-del.svg") no-repeat;
-  opacity: 0;
   position: absolute;
   top: 14px;
   right: 14px;
