@@ -3,7 +3,6 @@ import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import moviesApi from "../../utils/MoviesApi";
-import {filterShortMovies, filterNameMovies} from "../../utils/constants";
 
 function Movies({
   onClickLike,
@@ -24,39 +23,32 @@ function Movies({
   const [filteredMoviesList, setFilteredMoviesList] = useState(
     JSON.parse(localStorage.getItem("list")) || []
   );
-  const [searchText, setSearchText] = useState("");
 
   // получение фильмов
   React.useEffect(() => {
-   let filmsList = filteredMoviesList;
-    console.log(filteredMoviesList)
-    
-    if (isChecked === true) {
-      filmsList = filterShortMovies(filmsList);
-      } 
-    if(searchText){
-      filmsList = filterNameMovies(searchText, filmsList)
-      if(filmsList.length === 0) {
-        setErrorFormMessage({
-          show: true,
-          message: "Ничего не найдено",
-        });
-      } else {
-        setErrorFormMessage({ show: false, message: "" });
-      }
+    if (isChecked === false) {
+      setShortFilmsList(filteredMoviesList);
+    } else {
+      filterShortMovies(filteredMoviesList);
     }
-      setShortFilmsList(filmsList);
-    }, [isChecked, filteredMoviesList, searchText]);
+  }, [isChecked]);
+
   //переключение чекбокса
   function changeCheckbox() {
     setIsChecked(!isChecked);
     localStorage.setItem("isCheckbox", JSON.stringify(!isChecked));
   }
 
+  //фильтр короткометражных фильмов
+  function filterShortMovies(cards) {
+    const newCardsList = cards.filter((el) => el.duration < 40);
+    setShortFilmsList(newCardsList);
+    return newCardsList;
+  }
+
   //  форма поиска фильмов
   function handleFilterMovies(values) {
     if (values) {
-    setSearchText(values);
       moviesApi()
         .then((movie) => {
           const filterFilmsList = movie.filter((el) => {

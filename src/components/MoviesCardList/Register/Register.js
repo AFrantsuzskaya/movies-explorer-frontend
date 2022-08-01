@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
-import {FormValidator} from "../../hooks/FormValidator";
+import { FormValidator } from "../../hooks/FormValidator";
 
-function Register({onRegister, errorMessage, disabled}) {
+function Register({ onRegister, errorMessage }) {
+  const { values, handleChange, errors, isValid } = FormValidator();
 
-  const {values, handleChange, resetFrom, errors, isValid} = FormValidator();
-
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
     onRegister(values);
   }
-  
+
   return (
     <section className="register">
       <h2 className="register__title">Добро пожаловать!</h2>
@@ -28,11 +27,13 @@ function Register({onRegister, errorMessage, disabled}) {
             required
             minLength="2"
             maxLength="40"
-            value={values.name || ''}
+            value={values.name || ""}
             onChange={handleChange}
             errors={errors}
           />
-          <span id="name-error" className="register__input-error">{errors.name}</span>
+          <span id="name-error" className="register__input-error">
+            {errors.name}
+          </span>
         </label>
         <label className="register__label">
           <p className="register__input-name">E-mail</p>
@@ -46,10 +47,12 @@ function Register({onRegister, errorMessage, disabled}) {
             required
             minLength="6"
             maxLength="50"
-            value={values.email || ''}
+            value={values.email || ""}
             onChange={handleChange}
           />
-          <span id="email-error" className="register__input-error">{errors.email}</span>
+          <span id="email-error" className="register__input-error">
+            {errors.email}
+          </span>
         </label>
         <label className="register__label">
           <p className="register__input-name">Пароль</p>
@@ -63,15 +66,21 @@ function Register({onRegister, errorMessage, disabled}) {
             required
             minLength="8"
             maxLength="50"
-            value={values.password || ''}
+            value={values.password || ""}
             onChange={handleChange}
           />
           <span id="password-error" className="register__input-error">
-          {errors.password}
+            {errors.password}
           </span>
         </label>
-        <span id="button-error" className="register__form-error">{errorMessage.message}</span>
-        <button type="submit" className="link register__button" disabled={!isValid || disabled}>
+        <span id="button-error" className="register__form-error">
+          {errorMessage.message}
+        </span>
+        <button
+          type="submit"
+          className="link register__button"
+          disabled={!isValid}
+        >
           Зарегистрироваться
         </button>
       </form>
@@ -83,6 +92,6 @@ function Register({onRegister, errorMessage, disabled}) {
       </p>
     </section>
   );
-};
+}
 
 export default Register;

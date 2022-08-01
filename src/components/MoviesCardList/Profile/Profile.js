@@ -1,26 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { FormValidator } from "../../hooks/FormValidator";
 
-function Profile({ update, errorMessage, handleLogout, setErrorMessage, disabled }) {
+function Profile({ update, errorMessage, handleLogout }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const { values, handleChange, errors, isValid, setIsValid, setValues } = FormValidator();
- 
-  React.useEffect(() => {
-    if(values) {
-      setValues({
-        name: currentUser.name,
-        email: currentUser.email,
-      })
-    }
-  }, [currentUser]);
-
-  React.useEffect(()=> {
-    if (currentUser.name === values.name && currentUser.email === values.email) {
-      setIsValid(false);
-    }
-  }, [values, isValid, currentUser])
+  const { values, handleChange, errors, isValid } = FormValidator();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -43,7 +29,7 @@ function Profile({ update, errorMessage, handleLogout, setErrorMessage, disabled
               type="text"
               id="name"
               name="name"
-              placeholder='Имя'
+              placeholder={currentUser.name}
               autoComplete="off"
               required
               minLength="2"
@@ -67,7 +53,7 @@ function Profile({ update, errorMessage, handleLogout, setErrorMessage, disabled
               type="email"
               id="email"
               name="email"
-              placeholder="Email"
+              placeholder={currentUser.email}
               autoComplete="off"
               required
               minLength="8"
@@ -83,7 +69,7 @@ function Profile({ update, errorMessage, handleLogout, setErrorMessage, disabled
         <span id="button-error" className="register__form-error">
           {errorMessage.message}
         </span>
-        <button className="link text profile__button" disabled={!isValid || disabled}>
+        <button className="link text profile__button" disabled={!isValid}>
           Редактировать
         </button>
       </form>
