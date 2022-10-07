@@ -8,8 +8,8 @@ function AboutMe() {
       <h2 className="student__title">Студент</h2>
       <div className="student__container">
         <div className="student__column">
-          <h3 className="student__name">Виталий</h3>
-          <p className="student__profession">Фронтенд-разработчик, 30 лет</p>
+          <h3 className="student__name">Анастасия</h3>
+          <p className="student__profession">Фронтенд-разработчик, 37 лет</p>
           <p className="student__info">
             Я родилась в маленьком городке Алтайского края, сейчас живу в Москве, 
             закончила факультет социологии АГУ. Я люблю семейные путешествия и книги. 
